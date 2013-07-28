@@ -3,22 +3,24 @@
 
 #### 在某个命令的参数处使用
 ```
-echo "`cat <<'SQLEOF'
+echo "$(cat <<'SQLEOF'
 xxx''xxx'xxx'xx  123123    123123
 abc'asdf"
 $(dont-execute-this)
 foo"bar"''
-SQLEOF`"
+SQLEOF
+)"
 ```
 
 
 ### 赋值
 ```
-VAR="`cat <<'VAREOF'
+VAR="$(cat <<'VAREOF'
 abc'asdf"
 $(dont-execute-this)
 foo"bar"''
-VAREOF`"
+VAREOF
+)"
 ```
 
 ### bash打引号问题
