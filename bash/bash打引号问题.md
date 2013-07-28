@@ -1,3 +1,6 @@
+#### 参考资料: 
+* http://www.grymoire.com/Unix/Quote.html
+
 ### 使用here doc 
 转义问题终极解决方案 -> 完全不转义
 
@@ -13,7 +16,7 @@ SQLEOF
 ```
 
 
-### 赋值
+#### 赋值
 ```
 VAR="$(cat <<'VAREOF'
 abc'asdf"
@@ -23,9 +26,18 @@ VAREOF
 )"
 ```
 
-### bash打引号问题
+### 使用单引号'
+在单引号的字符串里面,不能包含单引号,bash不进行扩展
+```
+echo 'What the *heck* is a $ doing here???'
+```
 
-参考资料: http://www.grymoire.com/Unix/Quote.html
+#### 在单引号的字符串里面使用单引号
+使用\'转义,并且拼接字符串
+```
+echo \''haha'\'
+```
+
 
 ### 使用\处理一个字符的转义问题
 ```
@@ -35,12 +47,6 @@ echo Are you sure you want to remove these files\?
 echo This could be \
 a very \
 long line\!
-```
-
-### 使用单引号'处理转义问题
-最强的引号,只有'不能转义
-```
-echo 'What the *heck* is a $ doing here???'
 ```
 
 ### 使用双引号"
