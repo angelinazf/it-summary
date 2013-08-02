@@ -16,12 +16,13 @@ pecl install apc
 ### 配置参数
 #### 开发(能开的就开,不要过时的扩展)
 ```
-sudo apt-get install libxml2-dev make autoconf libicu-dev g++ libcurl4-openssl-dev libbz2-dev libgd2-xpm-dev libreadline-dev g++
+sudo apt-get install libxml2-dev make autoconf libicu-dev g++ libcurl4-openssl-dev libbz2-dev libgd2-xpm-dev libreadline-dev g++ libfreetype6-dev
 ./configure --with-apxs2=/usr/bin/apxs2 --with-mysql --enable-mbstring --enable-intl \
  --with-openssl --with-zlib --enable-bcmath --with-bz2 --with-curl --enable-ftp --with-gd \
  --with-mysqli --with-pdo-mysql --with-readline --enable-shmop --enable-soap --enable-sockets \
  --enable-sysvmsg --enable-sysvsem --enable-sysvshm --enable-zip --enable-mysqlnd --with-pear \
- --enable-opcache
+ --enable-opcache --enable-gd-native-ttf --enable-gd-jis-conv \
+ --with-freetype-dir=/usr/include/freetype2 --with-jpeg-dir=/usr/include
 ```
 #### 最小
 ```
@@ -46,6 +47,30 @@ sudo apt-file list apache2 | grep apx
 ```
 * 这个地方有2个包,php的安装说明里面建议不要用threaded MPM,就选择 apache2-prefork-dev: /usr/bin/apxs2
 /usr/bin/apxs2
+
+### 已遇到的问题
+#### 更新配置
+```
+./configure xxx
+make clean
+make 
+make install
+service apache2 restart
+```
+
+#### apc问题(2013-8-1)
+* php5.4 5.3可以安装apc, php5.5不可以安装
+
+#### gd问题(2013-8-1)
+##### imagettftext() 函数 
+* `--with-freetype-dir=/usr/include/freetype2`
+* 依赖 `libfreetype6-dev`
+
+##### imagejpeg() 函数
+* `--with-jpeg-dir=/usr/include`
+* 依赖 `libjpeg-dev`
+
+
 
 ### configure参数含义表
 #### --with-apxs2
