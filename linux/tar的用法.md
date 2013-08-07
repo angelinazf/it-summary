@@ -22,14 +22,18 @@ vim xxx.tar.gz
 ## 配合ssh做流式打包传输
 ### 从目录开始,到远程的一个tar文件(运行在源)
 ```
-tar -cf - /input_folder |ssh user_name@output_ip "dd of=/backup/git.1.6/$name.tar"
+tar -cf - /input_folder |ssh user_name@output_ip "dd of=/xxx/xxx.tar"
 ```
 ### 从目录开始,到远程的一个tar文件(运行在目标)
 ```
-ssh user_name@input_ip "tar -czf - /input_folder" | dd of=/backup/git.1.6/$name.tar
-ssh sunshine@222.197.183.78 "tar -czf - ~/firefox" | dd of=./src.tar.gz
+ssh user_name@input_ip "tar -czf - /input_folder" | dd of=/xxx/xxx.tar
 ```
-### 从目录开始,到远程的一个目录
+### 目录到目录(压缩)(执行在目标)
 ```
-ssh sunshine@222.197.183.78 "tar -czf - ~/firefox" | tar -xzf -C /tmp/1
+ssh user_name@input_ip "tar -czf - ~/xxx" | tar -xz -C /xxx
+```
+
+### 目录到目录(不压缩)(执行在目标)
+```
+ssh <user_name>@<input_ip> "cd ~/<source_path> && tar -cf - ." | tar -x -C ./<target_path>
 ```
