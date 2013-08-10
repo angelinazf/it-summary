@@ -13,5 +13,8 @@ show table status where Name="tbl_name"
 
 ## 不可行的方法
 下面这些信息不足..
+
+```
 explain `tbl_name`
 show columns from `tbl_name`
+```
