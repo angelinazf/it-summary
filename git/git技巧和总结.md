@@ -129,7 +129,7 @@ git filter-branch --index-filter 'git rm --cached --ignore-unmatch ./vendor/' --
 此处部分概念不懂,可能会出现奇怪的状态.在奇怪的状态下,只要把当前文件的修改到正确的状态,然后提交就 可以工作了.(可能会破坏历史信息)
 
 ## 同步数据
-### 镜像裸项目强制更新至某个远程分支
+### 镜像裸项目强制更新至某个远程项目
 ```
 git remote update --prune origin
 ```

@@ -1,8 +1,8 @@
 ```
 base_dir=`pwd`
-for f in `find -name description`; do 
+for f in `find -name HEAD`; do 
   cd $base_dir
   cd `dirname $f`; 
-  sudo -u git git gc; 
+  git gc; 
 done;
 ```
