@@ -12,6 +12,8 @@ class AdminUser implements UserInterface{
 ### 一对一OneToOne
 ```
     /**
+     * @var AdminRole
+     * 
      * @ORM\OneToOne(targetEntity="AdminRole",inversedBy="admin_users")
      * @ORM\JoinColumn(name="pid", referencedColumnName="id", onDelete="CASCADE")
      */
@@ -21,6 +23,8 @@ class AdminUser implements UserInterface{
 ### 多对多ManyToMany
 ```
     /**
+     * @var \Doctrine\Common\Collections\Collection<AdminRole>
+     * 
      * @ORM\ManyToMany(targetEntity="AdminRole",inversedBy="admin_users")
      * @ORM\JoinTable(name="deskit_admin_user_role",
      *   joinColumns={@ORM\JoinColumn(name="admin_id", referencedColumnName="id", onDelete="cascade")},
@@ -34,6 +38,8 @@ class AdminUser implements UserInterface{
 ### 一对多OneToMany
 ```
     /**
+     * @var \Doctrine\Common\Collections\Collection<Menu>
+     * 
      * @ORM\OneToMany(targetEntity="Deskit\AdminBundle\Entity\Menu", mappedBy="parent")
      */
     protected $children;
@@ -42,6 +48,8 @@ class AdminUser implements UserInterface{
 ### 多对一ManyToOne
 ```
     /**
+     * @var Menu
+     * 
      * @ORM\ManyToOne(targetEntity="Deskit\AdminBundle\Entity\Menu", inversedBy="children")
      * @ORM\JoinColumn(name="pid", referencedColumnName="id", onDelete="CASCADE")
      */
