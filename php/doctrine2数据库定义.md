@@ -9,6 +9,14 @@ class AdminUser implements UserInterface{
   ...
 }
 ```
+### 一对一OneToOne
+```
+    /**
+     * @ORM\OneToOne(targetEntity="AdminRole",inversedBy="admin_users")
+     * @ORM\JoinColumn(name="pid", referencedColumnName="id", onDelete="CASCADE")
+     */
+    protected $roles;
+```
 
 ### 多对多ManyToMany
 ```
