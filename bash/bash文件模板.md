@@ -2,15 +2,8 @@
 ```
 #!/usr/bin/env bash
 #xxx解释一下这个脚本的功能
-x=`echo $0 | grep "^/"`
-pwdp=`pwd`
-if test "${x}"; then
-        dir=`dirname $0`
-else
-        dir=`dirname $pwdp/$0`
-fi
-dir=$dir
-cd $dir
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+cd $DIR/../
 ```
 
 
