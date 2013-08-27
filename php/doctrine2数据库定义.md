@@ -61,3 +61,22 @@ class AdminUser implements UserInterface{
 * CASCADE   级联,  主表的行删除,副表的行也删除
 * SET NULL  设为空 主表的行删除,副表对应的字段设置为null
 * RESTRICT  禁止   只要副表中还有这个主表的这个值,主表就不能删除这一行
+
+### 在entity做自动添加时间戳
+```
+ * @ORM\HasLifecycleCallbacks
+ */
+class Transaction {
+```
+```
+    /** @ORM\PrePersist */
+    public function onPrePersist()
+    {
+        $this->add_time = new \DateTime();
+        $this->update_time = new \DateTime();
+    }
+    /** @ORM\PreUpdate */
+    public function onPreUpdate(){
+        $this->update_time = new \DateTime();
+    }
+```
