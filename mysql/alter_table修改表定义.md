@@ -5,10 +5,17 @@ alter table play.table_name
 	add column field1 int,
 	add column field2 int after id,
 ```
+
 ### 样例2
 ```
 ALTER TABLE  `cart_type` CHANGE  `typeid`  `typeid` INT UNSIGNED NOT NULL AUTO_INCREMENT
 ```
+
+### 样例3
+```
+alter table depart add column ord int not null default 0;
+```
+
 ### 完整详细定义
 ```
 ALTER [ONLINE | OFFLINE] [IGNORE] TABLE tbl_name
