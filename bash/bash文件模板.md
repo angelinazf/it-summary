@@ -1,7 +1,6 @@
 ## 文件模板
 ```
 #!/usr/bin/env bash
-#xxx解释一下这个脚本的功能
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd $DIR
 ```

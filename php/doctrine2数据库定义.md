@@ -9,6 +9,27 @@ class AdminUser implements UserInterface{
   ...
 }
 ```
+### 整数自增主键
+```
+    /**
+     * @var integer
+     *
+     * @ORM\Column(type="integer", options={"unsigned"=true})
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    protected $catid;
+```
+
+### 字符串类型
+```
+    /**
+     * @var string
+     *
+     * @ORM\Column
+     */
+    protected $catid;
+```
 
 ### 一对一OneToOne
 ```
