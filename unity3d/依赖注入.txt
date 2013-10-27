@@ -1,0 +1,4 @@
+### 一个基于类型的依赖注入组件
+```
+https://github.com/ninject/ninject
+```

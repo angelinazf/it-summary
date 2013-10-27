@@ -34,6 +34,7 @@ Explanations :
 * Video bitrate : 1200kb/s
 * Video size : 320px par 180px
 * Generated video : final_video.mp4
+
 Encode video for the PSP
 ===============================
 ```
@@ -66,11 +67,13 @@ Convert a wav file to Mp3
 ```
 ffmpeg -i son_origine.avi -vn -ar 44100 -ac 2 -ab 192 -f mp3 son_final.mp3
 ```
+
 Convert .avi video to .mpg
 ===============================
 ```
 ffmpeg -i video_origine.avi video_finale.mpg
 ```
+
 Convert .mpg to .avi
 ===============================
 ```

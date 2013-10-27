@@ -1,0 +1,7 @@
+### 这个地方有个插件可以序列化数据
+http://u3d.as/content/whydoidoit/save-game-json-binary/33x
+
+### 系统本来有一个key-value数据库可用,
+http://docs.unity3d.com/Documentation/ScriptReference/PlayerPrefs.html
+应该完全够用了...
+
