@@ -10,3 +10,10 @@ SET PASSWORD For 'mysqlUser'@'%' = PASSWORD('xxx');
 CREATE USER 'monty'@'localhost' IDENTIFIED BY 'some_pass';
 GRANT ALL PRIVILEGES ON *.* TO 'monty'@'localhost' WITH GRANT OPTION;
 ```
+
+注意事项
+==================
+### 用户名构成
+'mysqlUser'@'%' 前面是登录的用户名mysqlUser 后面的%表示那些ip的机器可以登录
+* '%' 表示所有ip都可以登录
+* '127.0.0.1' 表示这个ip 127.0.0.1 可以登录
