@@ -7,3 +7,7 @@ git fetch origin +refs/heads/*:refs/heads/*
 ```
 git push origin --mirror
 ```
+
+```
+git push origin refs/heads/*:refs/heads/*
+```
