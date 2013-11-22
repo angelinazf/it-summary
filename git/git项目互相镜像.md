@@ -1,5 +1,6 @@
 ### 将远程项目镜像到本地 pull镜像
 ```
+git fetch origin --mirror
 git fetch origin +refs/heads/*:refs/heads/*
 ```
 
