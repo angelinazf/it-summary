@@ -12,3 +12,9 @@ $ (Question)     =    match expression at the end of a line, as in A$.
 \{x\}            =    match exactly x occurrences of the preceding.
 \{x,\}           =    match x or more occurrences of the preceding.
 ```
+
+### 正则ip
+使用-P模式(-P不能少)
+```
+grep -P "[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}"
+```
