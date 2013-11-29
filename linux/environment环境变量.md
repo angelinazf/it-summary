@@ -12,13 +12,16 @@
 * 以普通用户ssh登录可用
 * 以sudo调用命令不可用
 * 进入sudo bash不可用
-* 不会立刻修改当前bash的环境变量,重新登录ssh生效
+* 不会立刻修改当前bash的环境变量,
+* 重新进入tmux无效
+* 重新登录ssh生效
 
 ### 修改/etc/bash.bashrc
-* 重新登录ssh生效
 * 以普通用户ssh登录可用
 * 以sudo调用命令不可用
 * 进入sudo bash,sudo -i可用
+* 重新登录ssh生效
+* 重新进入tmux生效
 
 ### 使永久环境变量生效
 * 重新登录ssh
