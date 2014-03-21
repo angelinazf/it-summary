@@ -32,7 +32,7 @@ while(1){
 ### Fix for infinite loops
 * 不进行下一轮匹配
 * 一般用于阻止匹配死循环(加上一般不会有问题.)
-
+* rewrite很神秘,不要乱改
 ```
 RewriteCond %{ENV:REDIRECT_STATUS} 200
 RewriteRule .* - [L]
