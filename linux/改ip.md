@@ -2,12 +2,14 @@
 vim /etc/network/interface
 ```
 # loopback回环
+修改`/etc/network/interface`
 ```
 auto lo
 iface lo inet loopback
 ```
 
 # 静态ip
+修改`/etc/network/interface`
 ```
 auto eth0
 iface eth0 inet static
@@ -19,4 +21,10 @@ iface eth0 inet static
     # dns-* options are implemented by the resolvconf package, if installed
     dns-nameservers 192.168.1.1
     dns-search dashu.us
+```
+
+# 使配置生效
+在bash里面运行
+```
+sudo /etc/init.d/networking restart
 ```
