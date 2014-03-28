@@ -1,6 +1,7 @@
 ### ubunut打开rewrite
 ```
 sudo a2enmod rewrite
+sudo service apache2 restart
 ```
 
 ### rewrite log 查看时处理
