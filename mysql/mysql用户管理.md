@@ -4,11 +4,23 @@
 ```
 SET PASSWORD For 'mysqlUser'@'%' = PASSWORD('xxx');
 ```
+```
+SET PASSWORD For 'root'@'%' = PASSWORD('xxx');
+```
+```
+SET PASSWORD For 'root'@'localhost' = PASSWORD('xxx');
+```
 
 ### 添加用户,并给予管理员权限
 ```
 CREATE USER 'monty'@'localhost' IDENTIFIED BY 'some_pass';
 GRANT ALL PRIVILEGES ON *.* TO 'monty'@'localhost' WITH GRANT OPTION;
+```
+
+### 添加一个root用户,并给予管理员权限
+```
+CREATE USER 'root'@'%' IDENTIFIED BY 'some_pass';
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;
 ```
 
 注意事项
