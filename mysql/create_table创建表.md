@@ -8,7 +8,7 @@ create table play.table_name(
   email varchar(255) comment '邮箱',
   primary key (id),
   unique index (real_name,email)
-)engine=memory DEFAULT CHARSET=utf8 COLLATE=utf8_bin
+)engine=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin
 ```
 
 ### 储存引擎 Storage Engines

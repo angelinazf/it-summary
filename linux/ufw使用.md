@@ -5,5 +5,5 @@ sudo ufw allow xxx.xxx.xxx.xxx from any port xxx
 
 ### 查看当前状态
 ```
-ufw status
+sudo ufw status
 ```

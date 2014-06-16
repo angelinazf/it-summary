@@ -16,6 +16,12 @@ ALTER TABLE  `cart_type` CHANGE  `typeid`  `typeid` INT UNSIGNED NOT NULL AUTO_I
 alter table depart add column ord int not null default 0;
 ```
 
+### 样例4
+```
+CREATE INDEX part_of_name ON customer (name,name2);
+create index name_gender on info_alumni_user_info (real_name,gender);
+```
+
 ### 完整详细定义
 ```
 ALTER [ONLINE | OFFLINE] [IGNORE] TABLE tbl_name

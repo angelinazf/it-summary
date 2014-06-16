@@ -1,5 +1,8 @@
 参考: https://dev.mysql.com/doc/refman/5.6/en/update.html
-
+### 例子
+```
+UPDATE AdminUser SET username='xxx',password='xxx' where id = 1;
+```
 ### Single-table syntax:
 ```
 UPDATE [LOW_PRIORITY] [IGNORE] table_reference

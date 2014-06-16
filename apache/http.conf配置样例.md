@@ -8,7 +8,7 @@ NameVirtualHost *:28840
     AllowOverride None
     Require all granted
 </Directory>
-# 没有写在列表里面的域名都出404(某个端口的第一个出现的配置)
+# 没有写在列表里面的域名都出404(某个端口的第一个出现的配置,会被当作该端口默认配置)
 <VirtualHost *:80>
     RewriteEngine On
     RewriteRule .* - [R=404,L]

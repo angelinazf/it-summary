@@ -9,5 +9,5 @@ $datas = $this->db->listinfo($where,'id desc',$_GET['page']);
 ```
 为
 ```
-$datas = $this->db->listinfo($where,'listorder desc',$_GET['page']);
+$datas = $this->db->listinfo($where,'listorder desc,inputtime desc',$_GET['page']);
 ```

@@ -1,5 +1,10 @@
 参考: https://dev.mysql.com/doc/refman/5.6/en/insert.html
 
+例子:
+```
+INSERT INTO AdminUser (username,password) VALUES ('admin','xxx');
+```
+
 ```
 INSERT [LOW_PRIORITY | DELAYED | HIGH_PRIORITY] [IGNORE]
     [INTO] tbl_name
