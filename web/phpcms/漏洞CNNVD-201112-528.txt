@@ -1,0 +1,49 @@
+CNNVD-201112-528
+
+
+如果发现 ./plugin.php 里面有几个正则,该漏洞已修复.
+
+由于文件/plugin.php对于用户提交的变量未过滤，导致本地文件包含漏洞的产生。
+相关代码如下：
+文件plugin.php
+if(isset($_GET['id'])) {
+	list($identification, $filename,$action) = explode('-', $_GET['id']);
+	$filename = !empty($filename) ? $filename : $identification;
+	$action = !empty($action) ? $action : 'init';
+}
+ 
+$cache = getcache($identification,'plugins');
+
+变量$identification的值来源于$_GET['id']，并进入函数getcache中
+
+Getcache函数在文件/ phpcms/libs/functions/ global.func.php中
+function getcache($name, $filepath='', $type='file', $config='') {
+	pc_base::load_sys_class('cache_factory','',0);
+	if($config) {
+		$cacheconfig = pc_base::load_config('cache');
+		$cache = cache_factory::get_instance($cacheconfig)->get_cache($config);
+	} else {
+		$cache = cache_factory::get_instance()->get_cache($type);
+	}
+	return $cache->get($name, '', '', $filepath);
+}
+ 
+$cache->get()在文件/phpcms/libs/classes/cache_file.class.php
+public function get($name, $setting = '', $type = 'data', $module = ROUTE_M) {
+		$this->get_setting($setting);
+		if(empty($type)) $type = 'data';
+		if(empty($module)) $module = ROUTE_M;
+		$filepath = CACHE_PATH.'caches_'.$module.'/caches_'.$type.'/';
+		$filename = $name.$this->_setting['suf'];
+		if (!file_exists($filepath.$filename)) {
+			return false;
+		} else {
+		    if($this->_setting['type'] == 'array') {
+		    	$data = @require($filepath.$filename);
+
+最终$_GET['id']变量变为$filename的一部分
+<* 参考
+s1@sebug.net
+http://sebug.net/appdir/phpcms
+http://sebug.net/appdir/phpcms
+*>

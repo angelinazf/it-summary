@@ -40,3 +40,21 @@ CSRF攻击方法:
 * 神秘的cookie值不能阻止csrf
 * 写数据全部用POST不能阻止csrf
 * 多步事务执行 不能阻止csrf
+
+
+### 在浏览器console中工具的方案
+```
+var xhrObj = new XMLHttpRequest();
+xhrObj.open('GET', 'https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js', false);
+xhrObj.send('');
+var se = document.createElement('script');
+se.type = "text/javascript";
+se.text = xhrObj.responseText;
+document.getElementsByTagName('head')[0].appendChild(se);
+
+$.ajax({
+  'url':'http://test.xxxx/admin.php/Index/loginAction',
+  'data':{"keyword":"xxxx"},
+  'type':'POST',
+});
+```

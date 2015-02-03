@@ -1,0 +1,19 @@
+CNNVD-201101-433
+phpcms V9 index.php catid参数sql注入漏洞
+
+http://eidelweiss-advisories.blogspot.com/2011/01/phpcms-v9-blind-sql-injection.html
+ 
+[!] index.php?m=content&c=rss&catid=[valid catid]
+ 
+Example p0c
+ 
+[!] http://host/index.php?m=content&c=rss&catid=10 <= True
+[!] http://host/index.php?m=content&c=rss&catid=-10 <= False
+[+] http://host/index.php?m=content&c=rss&catid=5 <= show MySQL Error (table)
+
+在./phpcms/modules/content/rss.php 出现下面这几行表示已经修复
+```
+$catid = $_GET['catid'] ? intval($_GET['catid']) : '0';
+```
+
+更好的解决方案是删掉这个函数的内容

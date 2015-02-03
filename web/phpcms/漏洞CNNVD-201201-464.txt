@@ -1,0 +1,9 @@
+CNNVD-201201-464
+
+查看./phpcms/modules/message/index.php 找到read函数,如果有下面这话表示没有bug
+```
+//判断是否属于当前用户
+        $check_user = $this->check_user($messageid,'to');
+```
+
+更好的解决方案是直接删掉干掉前台登陆和注册函数

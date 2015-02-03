@@ -1,0 +1,1 @@
+ssh username@a.com -t 'ssh -p 4875 username@b.com'

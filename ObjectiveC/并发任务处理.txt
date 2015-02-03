@@ -1,0 +1,20 @@
+### 序列化线程执行
+```
+dispatch_queue_t aQueue;
+aQueue = dispatch_queue_create("queue label", NULL);  
+dispatch_async(aQueue, ^{
+    // ...
+});
+dispatch_async(aQueue, ^{
+    // ...
+});
+```
+主要是可以避免lock
+
+### 并发任务执行
+```
+dispatch_queue_t aQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+dispatch_async(aQueue, ^{
+    // ...
+});
+```

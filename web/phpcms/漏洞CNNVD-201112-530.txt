@@ -1,0 +1,123 @@
+CNNVD-201112-530
+
+PHPCMS V9 index.php文件commentid参数本地文件包含漏洞
+
+http://sebug.net/vuldb/ssvid-26074
+
+php \0截断漏洞 https://bugs.php.net/bug.php?id=39863
+在php5.4里面已经修复了.
+
+由于PHPCMSV9文件attachments.php的未验证上传用户权限，可以上传文件(仅图片)。加上其他文件存在可以截断的本地包含漏洞，导致包含任意文件并获取webshell
+
+文件\phpcms\modules\attachment\attachments.php
+public function crop_upload() {	
+		if (isset($GLOBALS["HTTP_RAW_POST_DATA"])) {
+			$pic = $GLOBALS["HTTP_RAW_POST_DATA"];
+……
+file_put_contents($this->upload_path.$filepath.$new_file, $pic);
+
+通过调用该函数可以上传图片文件，程序最后将上传后的图片详细地址输出给用户
+
+文件\phpcms\modules\comment\index.php
+$this->commentid = isset($_GET['commentid']) && trim(urldecode($_GET['commentid'])) ? trim(urldecode($_GET['commentid'])) : $this->_show_msg(L('illegal_parameters'));
+$this->commentid = safe_replace($this->commentid);
+
+变量$_GET['commentid']先经过urldecode函数做url解码，再经过安全函数safe_replace过滤。
+函数safe_replace在文件\phpcms\libs\functions\ global.func.php
+function safe_replace($string) {
+	$string = str_replace('%20','',$string);
+	$string = str_replace('%27','',$string);
+	$string = str_replace('%2527','',$string);
+	$string = str_replace('*','',$string);
+	$string = str_replace('"','&quot;',$string);
+	$string = str_replace("'",'',$string);
+	$string = str_replace('"','',$string);
+	$string = str_replace(';','',$string);
+	$string = str_replace('<','&lt;',$string);
+	$string = str_replace('>','&gt;',$string);
+	$string = str_replace("{",'',$string);
+	$string = str_replace('}','',$string);
+	$string = str_replace('\\','',$string);
+	return $string;
+}
+
+变量$_GET['commentid'] 经过函数urldecode解码，可以绕过gpc对特殊字符的过滤。虽然后面经过安全函数safe_replace的过滤，但最终没有过滤\0
+
+在相同文件\phpcms\modules\comment\index.php中，
+public function post() {
+……
+if (!$data = get_comment_api($this->commentid)) {   
+			$this->_show_msg(L('illegal_parameters'));
+		} else {
+			$title = $data['title'];
+			$url = $data['url'];
+			unset($data);
+		}
+
+变量$this->commentid进入到函数get_comment_api中, 
+
+函数定义在文件\phpcms\modules\comment\functions\global.func.php中
+function get_comment_api($commentid) {
+	list($modules, $contentid, $siteid) = id_decode($commentid);
+	if (empty($modules) || empty($siteid) || empty($contentid)) {
+		return false;
+	}
+	$comment_api = '';
+	$module = explode('_', $modules);
+	$comment_api = pc_base::load_app_class('comment_api', $module[0]);
+	if (empty($comment_api)) return false;
+	return $comment_api->get_info($modules, $contentid, $siteid);
+}
+
+变量$commentid经过分割，$module[0]进入到函数load_app_class
+在文件\phpcms\base.php可以找到load_app_class
+public static function load_app_class($classname, $m = '', $initialize = 1) {
+		$m = empty($m) && defined('ROUTE_M') ? ROUTE_M : $m;
+		if (empty($m)) return false;
+		return self::_load_class($classname, 'modules'.DIRECTORY_SEPARATOR.$m.DIRECTORY_SEPARATOR.'classes', $initialize);
+	}
+
+变量$module[0]进入_load_class函数，代码如下:
+private static function _load_class($classname, $path = '', $initialize = 1) {
+		static $classes = array();
+		if (empty($path)) $path = 'libs'.DIRECTORY_SEPARATOR.'classes';
+ 
+		$key = md5($path.$classname);
+		if (isset($classes[$key])) {
+			if (!empty($classes[$key])) {
+				return $classes[$key];
+			} else {
+				return true;
+			}
+		}
+ 
+		if (file_exists(PC_PATH.$path.DIRECTORY_SEPARATOR.$classname.'.class.php')) {
+			include PC_PATH.$path.DIRECTORY_SEPARATOR.$classname.'.class.php';
+
+最终产生本地包含漏洞，且变量$classname是可以保留最初的截断00
+<* 参考
+s1@sebug.net 
+http://sebug.net/appdir/phpcms
+http://sebug.net/appdir/phpcms
+*>
+测试方法:
+
+@Sebug.net   dis
+本站提供程序(方法)可能带有攻击性,仅供安全研究与教学之用,风险自负!
+http://sebug.net/appdir/phpcms/index.php?m=comment&c=index&a=post&commentid=/图片地址%2500_6-1-1
+ 
+PS：官方demo getshell测试ok
+Sebug安全建议:
+
+sebug 临时解决方案：
+
+1、过滤变量$_GET['commentid']
+2、安全函数safe_replace增加对00字符的过滤
+
+厂商补丁：
+
+PHPCMS
+-------
+
+目前厂商已经提供补丁或者升级程序，我们建议使用此软件的用户随时关注厂商的主页以获取最新版本：
+http://bbs.phpcms.cn/thread-444632-1-1.html

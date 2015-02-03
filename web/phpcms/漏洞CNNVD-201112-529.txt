@@ -1,0 +1,5 @@
+CNNVD-201112-529
+
+
+应该和CNNVD-201112-530是同一个漏洞,
+PHPCMS v9 /phpcms/base.php 文件包含漏洞

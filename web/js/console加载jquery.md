@@ -23,7 +23,7 @@ document.getElementsByTagName('head')[0].appendChild(se);
 
 ### 如果有jquery
 ```
-$.getScript("http://code.jquery.com/jquery-1.11.0.js");
+$.getScript("https://code.jquery.com/jquery-1.11.0.js");
 ```
 
 ### 各大cdn的url样例

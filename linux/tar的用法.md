@@ -32,6 +32,10 @@ ssh user_name@input_ip "tar -czf - /input_folder" | dd of=/xxx/xxx.tar
 ```
 ssh user_name@input_ip "tar -czf - ~/xxx" | tar -xz -C /xxx
 ```
+### 目录到目录(压缩)(执行在源)
+```
+tar -czf - ~/xxx | ssh user_name@input_ip "tar -xz -C /xxx"
+```
 
 ### 目录到目录(不压缩)(执行在目标)
 ```

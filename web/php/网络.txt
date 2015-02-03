@@ -1,0 +1,10 @@
+### get获取文件信息
+```
+file_get_contents('http://xxx.com/xxx');
+```
+
+### get获取文件信息,带有超时功能
+错误处理,超时时会报warning,只能使用@消除,也可以不管,使这个错误跑到log里面,以便检查问题
+```
+@file_get_contents('http://xxx.com/xxx',false,stream_context_create(array('http'=>array('timeout' => 5))));
+```
