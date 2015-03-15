@@ -1,5 +1,6 @@
 it-summary
 ==========
+[![GitHub issues](https://img.shields.io/github/issues/bronze1man/it-summary.svg)](https://github.com/bronze1man/it-summary/issues)
 [![GitHub stars](https://img.shields.io/github/stars/bronze1man/it-summary.svg)](https://github.com/bronze1man/it-summary/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/bronze1man/it-summary.svg)](https://github.com/bronze1man/it-summary/network)
 [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/bronze1man/it-summary/blob/master/LICENSE)
