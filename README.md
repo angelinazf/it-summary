@@ -1,8 +1,6 @@
 it-summary
 ==========
-[![GitHub stars](https://img.shields.io/github/stars/bronze1man/it-summary.svg)](https://github.com/bronze1man/it-summary/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/bronze1man/it-summary.svg)](https://github.com/bronze1man/it-summary/network)
-[![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/bronze1man/it-summary/blob/master/LICENSE)
-
+* 详细研究各种工具的使用方法,解决黑魔法问题
 * 这里主要是各种工具,的用法样例
 * 如果你不想费劲看文档,然后再想具体如何实现某个需求,可以看一看这里
+* 官方网站 http://bronze1man.com
