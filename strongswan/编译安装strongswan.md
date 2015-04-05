@@ -7,4 +7,7 @@
 make install
 ```
 
-
+从git版本开始编译
+```
+sudo apt-get install automake autoconf libtool pkg-config gettext perl python flex bison gperf
+```
