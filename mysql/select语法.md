@@ -25,3 +25,9 @@ SELECT
       | INTO var_name [, var_name]]
     [FOR UPDATE | LOCK IN SHARE MODE]]
 ```
+
+### 样例
+```
+SELECT count(sta.FieldNum) as Num,sta.Event,stu.TableCId FROM TableA as sta,TableB as stu
+            where sta.TableBId=stu.Id GROUP BY stu.TableCId,sta.Event
+```

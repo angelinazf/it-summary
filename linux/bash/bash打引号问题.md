@@ -33,9 +33,10 @@ echo 'What the *heck* is a $ doing here???'
 ```
 
 #### 在单引号的字符串里面使用单引号
-使用\'转义,并且拼接字符串
+使用'\''转义,并且拼接字符串
 ```
 echo \''haha'\'
+echo 'haha'\''haha'
 ```
 
 

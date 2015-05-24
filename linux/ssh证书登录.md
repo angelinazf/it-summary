@@ -41,5 +41,6 @@ ssh证书一行导入.注意修改端口域名用户名
 ssh -p 11011 bronze1man@dashi.us 'umask 077; test -d ~/.ssh || mkdir ~/.ssh ; cat >> ~/.ssh/authorized_keys' < ~/.ssh/id_rsa.pub
 ```
 
+### 注意
 * 注意:一定是追加,不要把别人的证书覆盖了
 * 没有权限时可以用`sudo bash`提权
