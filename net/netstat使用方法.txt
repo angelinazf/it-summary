@@ -2,3 +2,8 @@
 ```
 netstat -n -p tcp
 ```
+
+### 显示所有监听的端口
+```
+netstat -nal
+```

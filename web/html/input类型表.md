@@ -2,9 +2,9 @@
 html渲染方式
 ```
 <!--初始没选中-->
-<input type="checkbox" name="IsLeader">
+<input type="checkbox" name="IsLeader" value="1">
 <!--初始选中了-->
-<input type="checkbox" name="IsLeader" checked>
+<input type="checkbox" name="IsLeader" value="1" checked>
 ```
 在html渲染时填入value的值 是用来提交的时候发送的表单的值,不填默认是 'on'
 
@@ -16,6 +16,12 @@ html渲染方式
 	使用`$($0).prop('checked')`来检查是否被选中
 	使用`$($0).val()`不管是否选中 总是返回 input上面的value的值.
 
+### type="radio" 一个可以点中的小圆圈
+html渲染方式
+```
+<input type="radio" name="ShipmentWay" value="EMS"/>
+```
+同一个name可以使用很多不同的value,这些name包含的input只有一个可以选中,选中后提交就会把这个input的name和value拿去提交.
 
 ### type="password" 一个输入密码的输入框
 html渲染方式
@@ -29,4 +35,3 @@ html渲染方式
 <input type='password' style='display:none'/>
 <input type="password" autocomplete="off" class="form-control" name="Password" value="xxx"/>
 ```
-	
