@@ -22,3 +22,15 @@ sudo tcpdump -i any -s 65535 -w 1.tcpdump port not 22
 ```
 ssh root@192.168.1.1 "tcpdump -w - -i any port not 22" > mypackets.pcap
 ```
+
+### android多步骤截包
+```
+adb shell 'su -c tcpdump -ni any -s 0 -w /sdcard/1.pcap'
+adb pull /sdcard/1.pcap ./
+wireshark-qt 1.pcap
+```
+
+### android流式截包到wireshark (失败)
+```
+adb shell 'sudo tcpdump -ni any -s 0 -w -' | wireshark-qt
+```

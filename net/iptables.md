@@ -4,6 +4,16 @@ iptables -L -v
 iptables-save
 ```
 
+### 把发到某个ip的某个端口的所有请求转发到另一个ip的另一个端口上
+```
+iptables -t nat -A PREROUTING -s 114.114.114.114 -p udp --dport 53 -j DNAT --to-destination 8.8.8.8:53
+```
+
+### 把某个ip的某个端口的所有请求转发到本机的一个端口上
+```
+iptables --table nat -A PREROUTING -s 114.114.114.114 -p udp -m udp --dport 53 -j REDIRECT --to-ports 53
+```
+
 ### 屏蔽单个ip
 ```
 iptables -A INPUT -s 10.10.10.10 -j DROP

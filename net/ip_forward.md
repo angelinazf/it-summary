@@ -1,3 +1,4 @@
+##### linux
 ### 查看是否开启
 ```
 cat /proc/sys/net/ipv4/ip_forward
@@ -14,3 +15,9 @@ echo 'net.ipv4.ip_forward = 1' >> /etc/sysctl.conf  # 下次启动后开启这�
 * 此命令开启后,当前机器的所有进程有效(没有bash的session问题.)
 * 此开启命令,重启后有效
 * 多次多次对配置进行写入不会出现问题.
+
+
+##### mac
+```
+sysctl -w net.inet.ip.forwarding=1
+```
