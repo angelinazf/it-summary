@@ -1,0 +1,2 @@
+当select的时候,如果有任何一个读取的chan被关闭无法使用,select 会立刻在那个chan上返回.
+所以一般只关闭一个叫closeChan的东西,其他chan不要关闭.让其他chan自然消亡就可以了.

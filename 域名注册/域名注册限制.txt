@@ -1,0 +1,17 @@
+注册容易的顶级域名后缀
+=====================
+* .com
+* .pw
+* .xyz
+
+
+注册麻烦的顶级域名后缀
+=====================
+### .de 
+For registration of a .de domain, your Administrative Contact must be a resident of Germany.
+
+### .es
+You must provide a valid identification number to register a .es domain. Please note that this domain does not support free changes to contact information after registration.
+
+### .fr
+.FR domains - Please choose european country for 'FR' tld domain registration in Registrant Contact.

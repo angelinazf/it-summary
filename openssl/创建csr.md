@@ -1,0 +1,1 @@
+openssl req -out fastcat.us.csr -new -newkey rsa:2048 -nodes -keyout fastcat.us.key

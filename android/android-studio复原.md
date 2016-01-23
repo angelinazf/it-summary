@@ -1,0 +1,1 @@
+选择 File->New->Import Files... 然后选择android项目根目录.

@@ -1,5 +1,12 @@
 ### 查看一个项目的submodule
+```
 git submodule
+```
+
+### 新下载的代码,里面包含一个submodule
+```
+git submodule update --recursive
+```
 
 ### 原则
 * 保证每个子项目有最新的代码
