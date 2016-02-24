@@ -1,15 +1,3 @@
-### 在项目下面建一个文件叫
-```
-.gitattributes
-```
-内容为
-```
-*.cs text eol=lf
-*.go text eol=lf
-*.yml text eol=lf
-*.sh text eol=lf
-```
-
 ### 在windows上,要求git使用linux的换行符.
 ```
 git config --global core.eol lf
